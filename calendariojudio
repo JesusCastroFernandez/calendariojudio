@@ -1,0 +1,11 @@
+(ns calendario-judio.core
+  (:require [clj-time.core :as t]
+            [clj-time.format :as f]))
+
+(defn current-hebrew-date []
+  (let [now (t/now)]
+    (-> (t/format now "yyyy-MM-dd")
+        (t/parse (f/formatter "yyyy-MM-dd"))
+        (t/to-hebrew))))
+
+(println "La fecha hebrea actual es:" (current-hebrew-date))
